@@ -17,7 +17,7 @@ class Scraper
   end
 
   def url_maker(artist, song)
-    "https://www.azlyrics.com/lyrics/#{artist}/#{song}.html"
+    "https://www.azlyrics.com/lyrics/#{format_words(artist)}/#{format_words(song)}.html"
   end
 
   def format_words(word)
