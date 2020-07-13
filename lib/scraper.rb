@@ -19,4 +19,9 @@ class Scraper
   def url_maker(artist, song)
     "https://www.azlyrics.com/lyrics/#{artist}/#{song}.html"
   end
+
+  def format_words(word)
+    formatted= word.gsub(' ','')
+    formatted.downcase
+  end
 end
