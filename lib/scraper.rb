@@ -14,13 +14,19 @@ class Scraper
   end
 
   def format_words(word)
-    formatted = word.gsub(/\s/, "")
+    formatted = word.gsub(/\s/, '')
     formatted.downcase
   end
 
   def scrape
     doc = Nokogiri::HTML(URI.open(url_maker))
-    doc.css('body > div.container.main-page > div > div.col-xs-12.col-lg-8.text-center >
+    doc = doc.css('body > div.container.main-page > div > div.col-xs-12.col-lg-8.text-center >
             div:nth-child(8)').each { |link| puts link.content }
+
+    return puts "Lyrics Not Found #{@song} by #{@artist}" if doc.empty?
+
+    doc
+  rescue OpenURI::HTTPError => e
+    puts "Didn't find lyrics for #{@song} by #{@artist}" if e.message == '404 Not Found'
   end
 end

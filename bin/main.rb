@@ -16,4 +16,4 @@ end
 
 lyrics = Scraper.new(artist, song)
 
-lyrics.scrape()
+lyrics.scrape
