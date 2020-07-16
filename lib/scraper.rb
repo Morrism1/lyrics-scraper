@@ -10,8 +10,8 @@ class Scraper
   end
 
   def scraper
-    if error_handle == 'Not found'
-      "Didn't Find the Lyrics of '#{@song} by '#{@artist}' "
+    if error_handle(url_maker) == 'Not found'
+      "Didn't Find the Lyrics of '#{@song}' by '#{@artist}' "
     else
       scrape
     end
@@ -21,7 +21,7 @@ class Scraper
 
   def scrape
     lyrics = ''
-    doc = Nokogiri::HTML(error_handle)
+    doc = Nokogiri::HTML(error_handle(url_maker))
     doc.css('body > div.container.main-page > div > div.col-xs-12.col-lg-8.text-center >
             div:nth-child(8),
             body > div.container.main-page > div > div.col-xs-12.col-lg-8.text-center >
@@ -29,9 +29,9 @@ class Scraper
     lyrics
   end
 
-  def error_handle
+  def error_handle(url)
     begin
-      page = URI.open(url_maker)
+      page = URI.open(url)
     rescue OpenURI::HTTPError => e
       page = 'Not found' if e.message == '404 Not Found'
     end
