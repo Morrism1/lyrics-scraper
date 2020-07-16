@@ -23,25 +23,33 @@ RSpec.describe Scraper do
 
   describe '#format_words' do
     it 'returns a string without spaces and lowercased' do
-      expect(scraper.format_words(artist)).to eql('kanyewest')
+      expect(scraper.send(:format_words, artist )).to eql('kanyewest')
     end
     it 'returns false to a string without spaces and lowercased' do
-      expect(scraper.format_words(artist)).not_to eql('kanye west')
+      expect(scraper.send(:format_words ,artist )).not_to eql('kanye west')
     end
   end
 
   describe '#url_maker' do
     it 'returns full made url for scraper' do
-      expect(scraper.url_maker).to eql('https://www.azlyrics.com/lyrics/kanyewest/throughthewire.html')
+      expect(scraper.send(:url_maker)).to eql('https://www.azlyrics.com/lyrics/kanyewest/throughthewire.html')
     end
     it 'returns false for defective url for scraper' do
-      expect(scraper.url_maker).not_to eql('https://www.azlyrics.com/lyrics/kanye west/through thewi re.html')
+      expect(scraper.send(:url_maker)).not_to eql('https://www.azlyrics.com/lyrics/kanye west/through thewi re.html')
     end
   end
 
   describe '#scrape' do
     it 'returns Nokogiri xml content' do
-      expect(scraper.scrape.class).to eql(Nokogiri::XML::NodeSet)
+      expect(scraper.send(scrape.class)).to eql(Nokogiri::XML::NodeSet)
     end
   end
+
+  describe "#error_handle" do
+    it 'returns a string from url maker method' do
+      allow(scraper.send(:error_handle)).to receive(scraper.send(:url_maker)).and_return('https://www.azlyrics.com/lyrics/kanyewest/throughthewire.html')
+      expect(scraper.send(:error_handle)).to eql("Not found")  
+    end
+  end
+  
 end
