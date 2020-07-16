@@ -9,6 +9,35 @@ class Scraper
     @song = song
   end
 
+  def scraper
+    if error_handle == 'Not found'
+      "Didn't Find the Lyrics of '#{@song} by '#{@artist}' "
+    else
+      scrape
+    end
+  end
+
+  private
+
+  def scrape
+    lyrics = ''
+    doc = Nokogiri::HTML(error_handle)
+    doc.css('body > div.container.main-page > div > div.col-xs-12.col-lg-8.text-center >
+            div:nth-child(8),
+            body > div.container.main-page > div > div.col-xs-12.col-lg-8.text-center >
+            div:nth-child(10)').map { |link| lyrics << link.content }
+    lyrics
+  end
+
+  def error_handle
+    begin
+      page = URI.open(url_maker)
+    rescue OpenURI::HTTPError => e
+      page = 'Not found' if e.message == '404 Not Found'
+    end
+    page
+  end
+
   def url_maker
     "https://www.azlyrics.com/lyrics/#{format_words(@artist)}/#{format_words(@song)}.html"
   end
@@ -16,17 +45,5 @@ class Scraper
   def format_words(word)
     formatted = word.gsub(/\s/, '')
     formatted.downcase
-  end
-
-  def scrape
-    doc = Nokogiri::HTML(URI.open(url_maker))
-    doc = doc.css('body > div.container.main-page > div > div.col-xs-12.col-lg-8.text-center >
-            div:nth-child(8)').each { |link| puts link.content }
-
-    return puts "Lyrics Not Found #{@song} by #{@artist}" if doc.empty?
-
-    doc
-  rescue OpenURI::HTTPError => e
-    puts "Didn't find lyrics for #{@song} by #{@artist}" if e.message == '404 Not Found'
   end
 end
