@@ -4,15 +4,5 @@ rvm:
 cache:
   bundler: true
   yarn: true
-
-
-branches:
-  only:
-    - feature
-
-before_script:
-  -gem install rspec
-
-script:
-  - rspec
   
+script: bundle exec rake spec
