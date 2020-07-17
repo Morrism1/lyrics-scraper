@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+  - 2.7
+cache:
+  bundler: true
+  yarn: true
+
+
+branches:
+  only:
+    - feature
+
+before_script:
+  -gem install rspec
+
+script:
+  - rspec
+  
