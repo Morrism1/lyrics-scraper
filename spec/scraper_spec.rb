@@ -1,5 +1,5 @@
 require_relative 'spec_helper.rb'
-require '../lib/scraper.rb'
+require_relative '../lib/scraper.rb'
 
 require 'nokogiri'
 
