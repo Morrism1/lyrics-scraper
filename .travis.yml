@@ -1,8 +1,0 @@
-language: ruby
-rvm:
-  - 2.7
-cache:
-  bundler: true
-  yarn: true
-  
-script: bundle exec rake spec
