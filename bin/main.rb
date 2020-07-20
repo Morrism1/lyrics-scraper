@@ -14,7 +14,7 @@ loop do
   break if !artist.empty? && !song.empty?
 end
 
-puts "----------------------------------------------"
+puts '----------------------------------------------'
 
 lyrics = Scraper.new(artist, song)
 
