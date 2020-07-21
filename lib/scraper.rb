@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class Scraper
-attr_reader :artist, :song
+  attr_reader :artist, :song
 
   def initialize(artist, song)
     @artist = artist
