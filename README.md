@@ -1,9 +1,9 @@
 # lyrics-scraper 🎹🎻
 
-> Ruby Capstone Project of Microverse, which students have to complete a real-world-like project within 72 hours according to [this project specifications](https://www.notion.so/Build-your-own-scraper-f54eaca54d8a4d758a5f0141468127a8)
+> Ruby Capstone Project of Microverse, which students have to complete a real-world-like project within 72 hours according to [this project specification](https://www.notion.so/Build-your-own-scraper-f54eaca54d8a4d758a5f0141468127a8)
 
-I decided to scrape Lyrics from `azlyrics.com`. As, i do love music much.
-I liked the idea that i can write the name and the title of song for international recognized Artists and be able to find them.
+I decided to scrape Lyrics from `azlyrics.com`. I do love music much.
+I liked the idea that I can write the name and the title of the song for internationally recognized Artists and be able to find them.
 
 ![Demo](https://user-images.githubusercontent.com/46853433/87832153-9a1cb680-c885-11ea-8ba8-e0ac06f5d9f4.png)
 
@@ -30,16 +30,16 @@ I liked the idea that i can write the name and the title of song for internation
 ## Deployment
 
 1) Git clone this repo and cd the to the `lyrics-scraper` directory.
-2) Run `bundle install` in command line to install Nokogiri and Rspec.
+2) Run `bundle install` in the command line to install Nokogiri and Rspec.
 3) Run `ruby bin/main.rb`.
-4) Input prompt will be present in separate lines. Press enter `name of artist` followed by `song` to begin the search.
+4) Input prompt will be present in separate lines. Press enter the` name of the artist` followed by `song` to begin the search.
 5) Voila! Lyrics will be displayed in the terminal or Receive an error if it does not exist. 🎶🎵🎼
 
 ## Run tests
 
 1) Git clone this repo and cd the to the `lyrics-scraper` directory.
-2) Install rspec with `gem install rspec`.
-3) Run `rspec` in Command Line.
+2) Install RSpec with `gem install rspec`.
+3) Run `rspec` in Command-Line.
 4) `12 examples, 0 failures` will be shown on the screen.
 
 👨 **Maurice Murangwa**
@@ -58,4 +58,4 @@ I liked the idea that i can write the name and the title of song for internation
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-Support this project with a ⭐️ and let us now if you would like to become a contributor!
+Support this project with a ⭐️ and let us know if you would like to become a contributor!
